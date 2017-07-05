@@ -13,3 +13,12 @@
 /LearnCore/obj
 /LearnCore/bin/Debug/netcoreapp1.1
 /LearnCore/wwwroot/lib
+/LearnCore.Application/bin/Debug/netcoreapp1.1
+/LearnCore.Application/obj
+/LearnCore.Domain/bin/Debug/netcoreapp1.1
+/LearnCore.Domain/obj
+/LearnCore.EntityFramworkCore/bin/Debug/netcoreapp1.1
+/LearnCore.EntityFramworkCore/obj
+/LearnCore.MVC/bin/Debug/netcoreapp1.1
+/LearnCore.MVC/obj
+/LearnCore.MVC/wwwroot/lib
