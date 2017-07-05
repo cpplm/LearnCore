@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs
+/LearnCore/bin/Debug/netcoreapp1.1
+/LearnCore/obj
+/LearnCore/obj/project.assets.json
+/LearnCore/obj/LearnCore.csproj.nuget.g.targets
+/LearnCore/obj/LearnCore.csproj.nuget.g.props
+/LearnCore/obj/LearnCore.csproj.codegeneration.targets
+/LearnCore/obj/Debug/netcoreapp1.1
+/LearnCore/obj
+/LearnCore/bin/Debug/netcoreapp1.1
+/LearnCore/wwwroot/lib
