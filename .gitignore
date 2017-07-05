@@ -22,3 +22,5 @@
 /LearnCore.MVC/bin/Debug/netcoreapp1.1
 /LearnCore.MVC/obj
 /LearnCore.MVC/wwwroot/lib
+/LearnCore.EntityFrameworkCore/bin/Debug/netcoreapp1.1
+/LearnCore.EntityFrameworkCore/obj
