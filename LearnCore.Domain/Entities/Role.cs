@@ -10,7 +10,7 @@ namespace LearnCore.Domain.Entities
     public class Role : Entity
     {
         /// <summary>
-        /// 角色编号
+        /// 角色编码
         /// </summary>
         public string Code { get; set; }
 
@@ -28,25 +28,15 @@ namespace LearnCore.Domain.Entities
         /// 创建时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
-
+        
         /// <summary>
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
 
         /// <summary>
-        /// 创建人
+        /// 角色菜单集合
         /// </summary>
-        public virtual User CreateUser { get; set; }
-
-        /// <summary>
-        /// 用户集合
-        /// </summary>
-        public virtual ICollection<User> Users { get; set; }
-
-        /// <summary>
-        /// 菜单集合
-        /// </summary>
-        public virtual ICollection<Menu> Menus { get; set; }
+        public virtual ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }

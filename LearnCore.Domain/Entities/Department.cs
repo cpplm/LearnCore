@@ -58,10 +58,5 @@ namespace LearnCore.Domain.Entities
         /// 包含用户
         /// </summary>
         public virtual ICollection<User> Users { get; set; }
-
-        /// <summary>
-        /// 创建人信息
-        /// </summary>
-        public virtual User CreateUser { get; set; }
     }
 }
