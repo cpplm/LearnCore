@@ -41,12 +41,24 @@ namespace LearnCore.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "用户名密码错误！");
+                    //ModelState.AddModelError("", "用户名密码错误！");
+                    ViewBag.ErrorInfo = "用户名或密码错误。";
                     return View();
                 }
             }
 
-            return View();
+            //foreach (var item in ModelState.Values)
+            //{
+            //    if (item.Errors.Count > 0)
+            //    {
+            //        ViewBag.ErrorInfo = item.Errors[0].ErrorMessage;
+            //        break;
+            //    }
+            //}
+
+            ViewBag.ErrorInfo = ModelState.Values.First().Errors[0].ErrorMessage;
+
+            return View(model);
         }
     }
 }
