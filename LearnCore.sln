@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Infrastructure", "04.Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnCore.EntityFrameworkCore", "LearnCore.EntityFrameworkCore\LearnCore.EntityFrameworkCore.csproj", "{A779A8D6-56BA-437F-A258-5C1903607F3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnCore.Utility", "LearnCore.Utility\LearnCore.Utility.csproj", "{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{A779A8D6-56BA-437F-A258-5C1903607F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A779A8D6-56BA-437F-A258-5C1903607F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A779A8D6-56BA-437F-A258-5C1903607F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +59,6 @@ Global
 		{1E119185-9EB7-4FE8-BCC7-9DC90F99AAD7} = {63DF8D8B-4F04-457D-BB12-FC267EA1F8BD}
 		{7A1A1585-F3E6-4AAE-9F73-3318E93690EC} = {7F31B34D-3684-4F2E-A9E6-B20915095DE7}
 		{A779A8D6-56BA-437F-A258-5C1903607F3D} = {BD407A80-7BBE-4F9E-A9A5-263D8FE0A529}
+		{DB7EE8C2-D3A0-432C-94D0-05ACF4F9C0E7} = {BD407A80-7BBE-4F9E-A9A5-263D8FE0A529}
 	EndGlobalSection
 EndGlobal

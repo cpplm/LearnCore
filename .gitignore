@@ -24,3 +24,5 @@
 /LearnCore.MVC/wwwroot/lib
 /LearnCore.EntityFrameworkCore/bin/Debug/netcoreapp1.1
 /LearnCore.EntityFrameworkCore/obj
+/LearnCore.Utility/bin/Debug/netcoreapp1.1
+/LearnCore.Utility/obj
