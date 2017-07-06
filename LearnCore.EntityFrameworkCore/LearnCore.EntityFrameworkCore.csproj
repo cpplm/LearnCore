@@ -14,4 +14,7 @@
     <ProjectReference Include="..\LearnCore.Domain\LearnCore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
 </Project>

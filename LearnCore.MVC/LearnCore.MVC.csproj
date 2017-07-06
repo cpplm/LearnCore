@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnCore.Application\LearnCore.Application.csproj" />
+    <ProjectReference Include="..\LearnCore.Utility\LearnCore.Utility.csproj" />
   </ItemGroup>
 
 </Project>

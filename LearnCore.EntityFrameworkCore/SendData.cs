@@ -22,7 +22,7 @@ namespace LearnCore.EntityFrameworkCore
                    new Department
                    {
                        Id = departmentId,
-                       Name = "Fonour集团总部",
+                       Name = "集团总部",
                        ParentId = Guid.Empty
                    }
                 );
