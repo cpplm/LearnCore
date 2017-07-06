@@ -41,9 +41,10 @@ namespace LearnCore
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
 
-
             // Add framework services.
             services.AddMvc();
+            // Session服务
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,15 +55,20 @@ namespace LearnCore
 
             if (env.IsDevelopment())
             {
+                //开发环境异常处理
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //生产环境异常处理
+                app.UseExceptionHandler("/Shared/Error");
             }
 
+            //使用静态文件
             app.UseStaticFiles();
+            //请求管道中启用Session
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
