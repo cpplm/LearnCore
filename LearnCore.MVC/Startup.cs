@@ -1,4 +1,7 @@
-﻿using LearnCore.EntityFrameworkCore;
+﻿using LearnCore.Application.UserApp;
+using LearnCore.Domain.IRepositories;
+using LearnCore.EntityFrameworkCore;
+using LearnCore.EntityFrameworkCore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +34,13 @@ namespace LearnCore
 
             //添加数据上下文
             services.AddDbContext<LearnCoreDbContext>(options => options.UseNpgsql(sqlConnectionString));
+            //services.AddDbContext<LearnCoreDbContext>(options => options.UseNpgsql(sqlConnectionString), ServiceLifetime.Transient);  //Transient     ServiceProvider总是创建一个新的服务实例。
+            //services.AddDbContext<LearnCoreDbContext>(options => options.UseNpgsql(sqlConnectionString), ServiceLifetime.Scoped);     //Scoped        ServiceProvider创建的服务实例由自己保存，（同一次请求）所以同一个ServiceProvider对象提供的服务实例均是同一个对象。
+            //services.AddDbContext<LearnCoreDbContext>(options => options.UseNpgsql(sqlConnectionString), ServiceLifetime.Singleton);  //Singleton     始终是同一个实例对象
+            //添加依赖注入
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserAppService, UserAppService>();
+
 
             // Add framework services.
             services.AddMvc();
