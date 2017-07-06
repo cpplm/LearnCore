@@ -86,11 +86,7 @@ namespace LearnCore.EntityFrameworkCore.Migrations
 
                     b.Property<string>("Remarks");
 
-                    b.Property<Guid?>("UserId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Roles");
                 });
@@ -117,9 +113,7 @@ namespace LearnCore.EntityFrameworkCore.Migrations
 
                     b.Property<Guid>("CreateUserId");
 
-                    b.Property<Guid?>("DepartmentId");
-
-                    b.Property<Guid>("DeptmentId");
+                    b.Property<Guid>("DepartmentId");
 
                     b.Property<string>("EMail");
 
@@ -141,8 +135,6 @@ namespace LearnCore.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreateUserId");
-
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Users");
@@ -161,13 +153,6 @@ namespace LearnCore.EntityFrameworkCore.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("LearnCore.Domain.Entities.Role", b =>
-                {
-                    b.HasOne("LearnCore.Domain.Entities.User")
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("LearnCore.Domain.Entities.RoleMenu", b =>
                 {
                     b.HasOne("LearnCore.Domain.Entities.Menu", "Menu")
@@ -183,14 +168,10 @@ namespace LearnCore.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("LearnCore.Domain.Entities.User", b =>
                 {
-                    b.HasOne("LearnCore.Domain.Entities.User", "CreateUser")
-                        .WithMany()
-                        .HasForeignKey("CreateUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("LearnCore.Domain.Entities.Department", "Department")
                         .WithMany("Users")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LearnCore.Domain.Entities.UserRole", b =>
@@ -201,7 +182,7 @@ namespace LearnCore.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LearnCore.Domain.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

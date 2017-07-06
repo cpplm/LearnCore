@@ -60,6 +60,8 @@ namespace LearnCore
                     name: "default",
                     template: "{controller=Login}/{action=Index}/{id?}");
             });
+
+            //SendData.Initialize(app.ApplicationServices); //初始化数据
         }
     }
 }

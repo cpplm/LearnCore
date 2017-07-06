@@ -51,14 +51,29 @@ namespace LearnCore.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    CreateTime = table.Column<DateTime>(nullable: true),
+                    CreateUserId = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Remarks = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: true),
                     CreateUserId = table.Column<Guid>(nullable: false),
-                    DepartmentId = table.Column<Guid>(nullable: true),
-                    DeptmentId = table.Column<Guid>(nullable: false),
+                    DepartmentId = table.Column<Guid>(nullable: false),
                     EMail = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<int>(nullable: false),
                     LastLoginTime = table.Column<DateTime>(nullable: false),
@@ -73,40 +88,11 @@ namespace LearnCore.EntityFrameworkCore.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Users_CreateUserId",
-                        column: x => x.CreateUserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Users_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Roles",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Code = table.Column<string>(nullable: true),
-                    CreateTime = table.Column<DateTime>(nullable: true),
-                    CreateUserId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Remarks = table.Column<string>(nullable: true),
-                    UserId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Roles_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,19 +144,9 @@ namespace LearnCore.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Roles_UserId",
-                table: "Roles",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RoleMenus_MenuId",
                 table: "RoleMenus",
                 column: "MenuId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_CreateUserId",
-                table: "Users",
-                column: "CreateUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_DepartmentId",

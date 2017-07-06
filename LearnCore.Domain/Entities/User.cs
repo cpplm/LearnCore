@@ -62,8 +62,8 @@ namespace LearnCore.Domain.Entities
         /// <summary>
         /// 部门ID
         /// </summary>
-        public Guid DeptmentId { get; set; }
-
+        public Guid DepartmentId { get; set; }
+        
         /// <summary>
         /// 是否已删除
         /// </summary>
@@ -75,15 +75,9 @@ namespace LearnCore.Domain.Entities
         public virtual Department Department { get; set; }
 
         /// <summary>
-        /// 创建人实体
-        /// </summary>
-
-        public virtual User CreateUser { get; set; }
-
-        /// <summary>
         /// 角色集合
         /// </summary>
 
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
