@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace LearnCore.Controllers
+namespace LearnCore.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : LearnCoreControllerBase
     {
         public IActionResult Index()
         {

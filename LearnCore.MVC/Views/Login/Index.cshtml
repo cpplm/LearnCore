@@ -23,8 +23,8 @@
         <div class="login-box-body">
             <p class="login-box-msg">用户登陆</p>
             @*<div asp-validation-summary="All" class="text-danger"></div>*@
-            <input id="errorInfo"  value="@ViewBag.ErrorInfo" />
-            <form asp-controller="Login" asp-action="Index" method="post">
+            <input id="errorInfo" value="@ViewBag.ErrorInfo" hidden />
+            <form asp-controller="Login" asp-action="Index" method="post" onsubmit="onSubmit()">
                 <div class="form-group has-feedback">
                     <input asp-for="UserName" type="text" class="form-control" placeholder="用户名">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                        <button type="submit" id="btnLogin" class="btn btn-primary btn-block btn-flat" onclick="onSubmit()">登录</button>
                     </div>
                 </div>
             </form>
@@ -50,9 +50,9 @@
         <!-- /.login-box-body -->
     </div>
     <!-- /.login-box -->
-
     <!-- JavaScript -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery.cookie/jquery.cookie.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/iCheck/icheck.js"></script>
     <script src="~/lib/layer/build/layer.js"></script>
@@ -65,10 +65,38 @@
             });
 
             //显示服务端验证的错误信息
-            if ($("#errorInfo").val()) {
+            if ($("#errorInfo").val().length > 0) {
                 layer.tips($("#errorInfo").val(), "#btnLogin");
+                //layer.msg($("#errorInfo").val(), {
+                //    icon: 5,offset:'20px'
+                //});
             };
+
+            //判断之前是否有设置cookie，如果有，则设置【记住我】选择框
+            if ($.cookie("learncore_userName") != undefined) {
+                //$("#RememberMe").attr("checked", "checked");
+                $("#RememberMe").iCheck('check');
+            }
+            else {
+                $("#RememberMe").removeAttr("checked");
+            }
+            //读取cookie
+            if ($("#RememberMe:checked").length > 0) {
+                $("#UserName").val($.cookie("learncore_userName"));
+                $("#Password").val($.cookie("learncore_password"));
+            }
         });
+
+        //根据是否勾选记住我记录或清除cookie
+        function onSubmit() {
+            if ($("#RememberMe:checked").length > 0) {//设置cookie
+                $.cookie("learncore_userName", $("#UserName").val());
+                $.cookie("learncore_password", $("#Password").val());
+            } else {//清除cookie
+                $.removeCookie("learncore_userName");
+                $.removeCookie("learncore_password");
+            }
+        };
     </script>
 </body>
 </html>

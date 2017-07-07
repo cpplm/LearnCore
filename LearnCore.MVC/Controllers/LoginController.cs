@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using LearnCore.Application.UserApp;
+ï»¿using LearnCore.Application.UserApp;
 using LearnCore.MVC.Models;
 using LearnCore.Utility;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-namespace LearnCore.Controllers
+namespace LearnCore.MVC.Controllers
 {
     public class LoginController : Controller
     {
@@ -30,34 +26,32 @@ namespace LearnCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                //¼ì²éÓÃ»§
+                //æ£€æŸ¥ç”¨æˆ·
                 var user = userService.CheckUser(model.UserName, model.Password);
                 if (user != null)
                 {
-                    //¼ÇÂ¼ÓÃ»§
+                    //è®°å½•ç”¨æˆ·
                     HttpContext.Session.Set("CurrentUser", ByteConvertHelper.Object2Bytes(user));
-                    //Ìø×ªÏµÍ³Ê×Ò³
+                    //è·³è½¬ç³»ç»Ÿé¦–é¡µ
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    //ModelState.AddModelError("", "ÓÃ»§ÃûÃÜÂë´íÎó£¡");
-                    ViewBag.ErrorInfo = "ÓÃ»§Ãû»òÃÜÂë´íÎó¡£";
+                    //ModelState.AddModelError("", "ç”¨æˆ·åå¯†ç é”™è¯¯ï¼");
+                    ViewBag.ErrorInfo = "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ã€‚";
                     return View();
                 }
             }
 
-            //foreach (var item in ModelState.Values)
-            //{
-            //    if (item.Errors.Count > 0)
-            //    {
-            //        ViewBag.ErrorInfo = item.Errors[0].ErrorMessage;
-            //        break;
-            //    }
-            //}
-
-            ViewBag.ErrorInfo = ModelState.Values.First().Errors[0].ErrorMessage;
-
+            foreach (var item in ModelState.Values)
+            {
+                if (item.Errors.Count > 0)
+                {
+                    ViewBag.ErrorInfo = item.Errors[0].ErrorMessage;
+                    break;
+                }
+            }
+ 
             return View(model);
         }
     }
