@@ -146,6 +146,51 @@ namespace LearnCore.EntityFrameworkCore.Repositories
 
             return Expression.Lambda<Func<TEntity, bool>>(lambdaBody, lambdaParam);
         }
+
+        /// <summary>
+        /// 根据Lambda表达式进行删除
+        /// </summary>
+        /// <param name="where">lambda表达式</param>
+        /// <param name="autoSave">是否自动保存</param>
+        public void Delete(Expression<Func<TEntity, bool>> where, bool autoSave = true)
+        {
+            db.Set<TEntity>().Where(where).ToList().ForEach(it => db.Set<TEntity>().Remove(it));
+            if (autoSave)
+            {
+                Save();
+            }
+        }
+
+        /// <summary>
+        /// 分页获取数据
+        /// </summary>
+        /// <param name="startPage">起始页</param>
+        /// <param name="pageSize">页面条目</param>
+        /// <param name="rowCount">数据总数</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="order">排序</param>
+        /// <returns></returns>
+        public IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where = null, Expression<Func<TEntity, object>> order = null)
+        {
+            var result = db.Set<TEntity>().AsQueryable();
+
+            if (where != null)
+            {
+                result = result.Where(where);
+            }
+
+            if (order != null)
+            {
+                result = result.OrderBy(order);
+            }
+            else
+            {
+                result = result.OrderBy(m => m.Id);
+            }
+
+            rowCount = result.Count();
+            return result.Skip((startPage - 1) * pageSize).Take(pageSize);
+        }
     }
 
     /// <summary>

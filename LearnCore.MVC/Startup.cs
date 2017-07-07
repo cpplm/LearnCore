@@ -1,4 +1,5 @@
-﻿using LearnCore.Application.UserApp;
+﻿using LearnCore.Application;
+using LearnCore.Application.UserApp;
 using LearnCore.Domain.IRepositories;
 using LearnCore.EntityFrameworkCore;
 using LearnCore.EntityFrameworkCore.Repositories;
@@ -7,7 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace LearnCore.MVC
 {
@@ -22,6 +25,9 @@ namespace LearnCore.MVC
                 .AddEnvironmentVariables();
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            //初始化映射关系
+            LearnCoreMapper.Initialize();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -65,16 +71,24 @@ namespace LearnCore.MVC
                 app.UseExceptionHandler("/Shared/Error");
             }
 
-            //使用静态文件
-            app.UseStaticFiles();
+            ////使用静态文件
+            //app.UseStaticFiles();
             //请求管道中启用Session
             app.UseSession();
-
+            //配置Router默认指向登陆画面
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Login}/{action=Index}/{id?}");
+            });
+
+            //使用静态文件
+            app.UseStaticFiles();
+            //访问自身js文件
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
             });
 
             //SendData.Initialize(app.ApplicationServices); //初始化数据

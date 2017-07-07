@@ -1,17 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@RenderSection("scripts", false)
+<!DOCTYPE html>
 <html>
 <head>
     <title>权限管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="~/lib/jstree/dist/themes/default/style.css" />
     <link rel="stylesheet" href="~/css/AdminLTE.css">
-    <!--皮肤-->
     <link rel="stylesheet" href="~/css/skins/skin-blue.css">
-
+    <!-- JavaScript -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jstree/dist/jstree.js"></script>
     <script src="~/js/app.js"></script>
     <script src="~/js/adminlte.js"></script>
     <script src="~/js/demo.js"></script>
@@ -322,10 +325,10 @@
                 <ul class="sidebar-menu">
                     <li class="header">权限管理</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>组织机构</span></a></li>
+                    <li class="active"><a href="/Home"><i class="fa fa-link"></i><span>组织机构</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>角色管理</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>用户管理</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
+                    <li><a href="/Menu"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>权限管理</span></a></li>
                 </ul>
             </section>
